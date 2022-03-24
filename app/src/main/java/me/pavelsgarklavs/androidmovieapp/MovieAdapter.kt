@@ -31,8 +31,6 @@ class MovieAdapter(
             averageScore.text = movie.voteAverage.toString()
             Glide.with(itemView).load(Constants.imageBaseURL + movie.poster).into(moviePoster)
 
-            Log.d(TAG, "${movie.title}")
-
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, MovieDetailsActivity::class.java)
 

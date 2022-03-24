@@ -51,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:maxLines="5"
             android:text="@string/lorem_ipsum"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/movie_release_date" />
@@ -79,8 +78,6 @@
             android:text="@string/genre_name"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/movie_genre_title" />
-
-
 
     </LinearLayout>
 </ScrollView>

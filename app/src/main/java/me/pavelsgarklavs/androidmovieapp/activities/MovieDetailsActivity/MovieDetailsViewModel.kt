@@ -23,7 +23,6 @@ class MovieDetailsViewModel {
 
         GlobalScope.launch(Dispatchers.Main) {
             getGenresData { allGenres: List<Genre> ->
-
                 for (genre in allGenres) {
                     if (genreId == genre.id && genre.name != null) {
                         movieGenresTextView.text = genre.name
@@ -42,7 +41,8 @@ class MovieDetailsViewModel {
             }
 
             override fun onResponse(call: Call<GenreResponse>, response: Response<GenreResponse>) {
-                return callback(response.body()!!.genres)
+                val callBack = response.body() ?: return
+                return callback(callBack.genres)
             }
         })
     }

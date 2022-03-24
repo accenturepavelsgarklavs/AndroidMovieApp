@@ -32,6 +32,7 @@ class MovieActivity : AppCompatActivity() {
 
         rv.layoutManager = LinearLayoutManager(this)
         rv.setHasFixedSize(true)
+
         lifecycleScope.launch(Dispatchers.Main) {
             getMovieData { movies: List<Movie> ->
                 rv.adapter = MovieAdapter(movies)
@@ -39,6 +40,7 @@ class MovieActivity : AppCompatActivity() {
         }
     }
 
+    // TODO: Move API Call to movie view model
     private fun getMovieData(callback: (List<Movie>) -> Unit) {
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
         progressBar.visibility = View.VISIBLE
@@ -51,7 +53,8 @@ class MovieActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 progressBar.visibility = View.GONE
-                return callback(response.body()!!.movies)
+                val callBack = response.body() ?: return
+                return callback(callBack.movies)
             }
         })
     }
