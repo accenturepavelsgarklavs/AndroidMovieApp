@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Android Movie App</string>
+    <string name="movie_poster_image">Movie Poster Image</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="released_2021">Released: 2021</string>
+    <string name="lorem_ipsum">Lorem ipsum, Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</string>
+    <string name="genre_name">genre_name</string>
+    <string name="genre_title">Genre</string>
+</resources>
