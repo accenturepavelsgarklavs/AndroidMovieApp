@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/gradiant_background"
     tools:context=".activities.MovieActivity.MovieActivity" >
 
     <ProgressBar
@@ -12,10 +12,16 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="gone"
+        android:indeterminateTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_to_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -38,8 +44,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/fredoka"
+                android:textSize="48sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -47,8 +54,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/fredoka"
                 android:text="Popular Movies"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/filter_input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/white"
+                app:boxBackgroundColor="@color/black"
+                android:layout_margin="16dp"
+                app:startIconDrawable="@drawable/ic_filter">
+
+                <AutoCompleteTextView
+                    android:id="@+id/filter_auto_complete_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="@string/filter_hint"
+                    android:inputType="none"
+                    android:textColor="@color/white"
+                    android:text="None"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_movies_list"
@@ -57,4 +88,5 @@
                 android:layout_marginTop="16dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

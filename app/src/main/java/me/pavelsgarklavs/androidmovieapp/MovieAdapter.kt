@@ -1,8 +1,6 @@
 package me.pavelsgarklavs.androidmovieapp
 
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,14 +30,9 @@ class MovieAdapter(
             Glide.with(itemView).load(Constants.imageBaseURL + movie.poster).into(moviePoster)
 
             itemView.setOnClickListener {
+                MovieData.movie = movie
+
                 val intent = Intent(itemView.context, MovieDetailsActivity::class.java)
-
-                intent.putExtra("movie_title", movie.title)
-                intent.putExtra("movie_release_date", movie.release)
-                intent.putExtra("movie_poster", movie.poster)
-                intent.putExtra("movie_overview", movie.overview)
-                intent.putExtra("movie_genre_id", movie.genre?.get(0))
-
                 itemView.context.startActivity(intent)
             }
         }
